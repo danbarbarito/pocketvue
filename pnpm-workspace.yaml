@@ -1,0 +1,8 @@
+packages:
+  - frontend
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - sqlite3
+  - vue-demi

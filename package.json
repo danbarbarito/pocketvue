@@ -1,0 +1,25 @@
+{
+  "name": "pocketvue",
+  "version": "0.0.1",
+  "description": "A single binary Go + Vue saas starter kit",
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:frontend\" \"pnpm run dev:backend\"",
+    "dev:frontend": "cd frontend && pnpm run dev --host",
+    "dev:backend": "cd backend && go run -tags dev . serve --dev=0",
+    "build:frontend": "cd frontend && pnpm run generate",
+    "build:backend": "go build -ldflags=\"-s -w\" -C backend -o pocketvue .",
+    "generate:migrations": "cd backend && go run . migrate collections",
+    "build": "pnpm run build:frontend && pnpm run build:backend",
+    "typegen": "npx pocketbase-typegen --env --out frontend/types/pocketbase.ts",
+    "format": "pnpm --recursive run format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.2",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "concurrently": "^9.2.1",
+    "pocketbase-typegen": "^1.3.1"
+  }
+}

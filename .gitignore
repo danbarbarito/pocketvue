@@ -1,0 +1,50 @@
+# Root dependencies
+node_modules/
+.env
+.env.*
+
+# Built artifacts
+backend/pocketvue
+backend/ui/dist/*
+backend/pb_data
+backend/pb_data/*
+backend/pb_migrations
+backend/pb_migrations/*
+builds/
+builds/*
+.builds/
+.builds/*
+
+# OS files
+.DS_Store
+
+
+# Nuxt dev/build outputs
+frontend/.output
+frontend/.data
+frontend/.nuxt
+frontend/.nitro
+frontend/.cache
+frontend/dist
+
+# Node dependencies
+frontend/node_modules
+
+# Logs
+frontend/logs
+frontend/*.log
+
+# Misc
+frontend/.DS_Store
+frontend/.fleet
+frontend/.idea
+
+# Local env files
+frontend/.env
+frontend/.env.*
+frontend/.env.example
+
+backend/.env
+backend/.env.*
+backend/.env.example
+backend/ui/dist/*

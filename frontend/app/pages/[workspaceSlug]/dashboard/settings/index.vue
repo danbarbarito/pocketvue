@@ -1,0 +1,4 @@
+<template>
+  <WorkspaceGeneralSettings />
+  <WorkspaceDelete />
+</template>

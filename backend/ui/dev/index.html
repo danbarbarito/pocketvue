@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PocketVue (dev)</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 2rem auto;
+        max-width: 40rem;
+        line-height: 1.5;
+      }
+      code {
+        background: #f2f2f2;
+        padding: 0.1rem 0.3rem;
+        border-radius: 4px;
+      }
+      button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PocketVue backend (dev tag)</h1>
+    <p>
+      Static assets are not embedded when building with the <code>dev</code> tag. Use the Nuxt
+      dev server running on <a href="http://localhost:3000">localhost:3000</a>.
+    </p>
+    <button onclick="window.location.href='http://localhost:3000'">Open the frontend application</button>
+    <script>
+      function openFrontend() {
+        window.location.href = 'http://localhost:3000';
+      }
+    </script>
+  </body>
+</html>

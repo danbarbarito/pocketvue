@@ -1,0 +1,196 @@
+// Reserved slugs that cannot be used for workspace creation
+export const BLOCKED_SLUGS = [
+  // App/System reserved
+  'admin',
+  'super-admin',
+  'superadmin',
+  'api',
+  'app',
+  'www',
+  'mail',
+  'email',
+  'my',
+  'support',
+  'help',
+  'blog',
+  'docs',
+  'status',
+  'cdn',
+  'assets',
+  'static',
+  'files',
+  'dashboard',
+  'settings',
+  'account',
+  'billing',
+  'pricing',
+  'about',
+  'contact',
+  'terms',
+  'privacy',
+  'security',
+  'legal',
+  'careers',
+  'jobs',
+  'press',
+  'media',
+  'news',
+  'public',
+  'private',
+  'internal',
+  'system',
+  'root',
+  'config',
+  'setup',
+  'install',
+  'upgrade',
+  'maintenance',
+  'test',
+  'testing',
+  'staging',
+  'dev',
+  'development',
+  'prod',
+  'production',
+  'demo',
+  'sandbox',
+  'preview',
+
+  // Profanity words
+  'fuck',
+  'shit',
+  'bitch',
+  'ass',
+  'asshole',
+  'bastard',
+  'damn',
+  'hell',
+  'crap',
+  'piss',
+  'cock',
+  'dick',
+  'pussy',
+  'cunt',
+  'tits',
+  'boobs',
+  'whore',
+  'slut',
+  'fag',
+  'faggot',
+  'nigger',
+  'nigga',
+  'retard',
+  'gay',
+  'lesbian',
+  'homo',
+  'dyke',
+  'tranny',
+  'nazi',
+  'hitler',
+  'terrorist',
+  'bomb',
+  'kill',
+  'murder',
+  'rape',
+  'sex',
+  'porn',
+  'xxx',
+  'nude',
+  'naked',
+  'fetish',
+  'kinky',
+  'drugs',
+  'weed',
+  'cocaine',
+  'heroin',
+  'meth',
+  'crack',
+  'alcohol',
+  'beer',
+  'wine',
+  'vodka',
+  'whiskey'
+] as const
+
+/**
+ * Check if a slug is blocked/reserved
+ * @param slug - The slug to check
+ * @returns true if the slug is blocked, false otherwise
+ */
+export const isSlugBlocked = (slug: string): boolean => {
+  const normalizedSlug = slug.toLowerCase().trim()
+  return BLOCKED_SLUGS.includes(normalizedSlug as any)
+}
+
+/**
+ * Get a user-friendly error message for blocked slugs
+ * @param slug - The blocked slug
+ * @returns Error message string
+ */
+export const getBlockedSlugMessage = (slug: string): string => {
+  const normalizedSlug = slug.toLowerCase().trim()
+
+  // Check if it's a system/app reserved word
+  const systemWords = [
+    'admin',
+    'api',
+    'app',
+    'www',
+    'mail',
+    'email',
+    'superadmin',
+    'super-admin',
+    'support',
+    'help',
+    'blog',
+    'docs',
+    'status',
+    'cdn',
+    'assets',
+    'static',
+    'files',
+    'dashboard',
+    'settings',
+    'account',
+    'billing',
+    'pricing',
+    'about',
+    'contact',
+    'terms',
+    'privacy',
+    'security',
+    'legal',
+    'careers',
+    'jobs',
+    'press',
+    'media',
+    'news',
+    'public',
+    'private',
+    'internal',
+    'system',
+    'root',
+    'config',
+    'setup',
+    'install',
+    'upgrade',
+    'maintenance',
+    'test',
+    'testing',
+    'staging',
+    'dev',
+    'development',
+    'prod',
+    'production',
+    'demo',
+    'sandbox',
+    'preview'
+  ]
+
+  if (systemWords.includes(normalizedSlug)) {
+    return 'This URL is reserved for system use. Please choose a different one.'
+  }
+
+  // For profanity and other blocked words
+  return 'This URL is not available. Please choose a different one.'
+}

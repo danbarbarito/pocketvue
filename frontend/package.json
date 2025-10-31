@@ -1,0 +1,33 @@
+{
+  "name": "pocketvue",
+  "description": "A single binary Go + Vue saas starter kit",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "generate:types": "npx pocketbase-typegen --env --out frontend/types/pocketbase.ts",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@nuxt/ui": "^4.1.0",
+    "@vueuse/nuxt": "14.0.0",
+    "nuxt": "^4.2.0",
+    "pocketbase": "^0.26.2",
+    "tailwindcss": "^4.1.16",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-classnames": "^0.8.5",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.1.2"
+  },
+  "packageManager": "pnpm@10.18.2"
+}
