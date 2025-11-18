@@ -52,6 +52,12 @@ func CreateCheckoutSession(e *core.RequestEvent) error {
 		return helpers.JSONBadRequest(e, "products field is required and must contain at least one product ID")
 	}
 
+	// Validate FrontendURL is configured before building checkout URLs
+	if err := helpers.ValidateFrontendURL(); err != nil {
+		log.Printf("Error: FrontendURL not configured: %v", err)
+		return helpers.JSONInternalServerError(e, "server configuration error: frontend URL is not set. Please configure FRONTEND_URL environment variable")
+	}
+
 	// Build URLs using helper functions
 	successURL := helpers.BuildCheckoutSuccessURL(req.WorkspaceSlug, req.ReturnPath)
 	returnURL := helpers.BuildCheckoutReturnURL(req.WorkspaceSlug, req.ReturnPath)
@@ -99,6 +105,12 @@ func CreateCustomerPortalSession(e *core.RequestEvent) error {
 	if err := json.NewDecoder(e.Request.Body).Decode(&req); err != nil {
 		log.Printf("Error parsing customer portal request: %v", err)
 		return helpers.JSONBadRequest(e, "invalid request body")
+	}
+
+	// Validate FrontendURL is configured before building portal URLs
+	if err := helpers.ValidateFrontendURL(); err != nil {
+		log.Printf("Error: FrontendURL not configured: %v", err)
+		return helpers.JSONInternalServerError(e, "server configuration error: frontend URL is not set. Please configure FRONTEND_URL environment variable")
 	}
 
 	// Build return URL using helper function

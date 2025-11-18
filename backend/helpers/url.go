@@ -1,7 +1,9 @@
 package helpers
 
 import (
+	"errors"
 	"pocketvue/config"
+	"strings"
 )
 
 // BuildFrontendURL constructs a frontend URL with the given path
@@ -60,4 +62,20 @@ func BuildCustomerPortalReturnURL(workspaceSlug, returnPath string) string {
 	return BuildFrontendURL("/dashboard/settings/billing")
 }
 
+// ValidateFrontendURL checks if FrontendURL is properly configured
+// Returns an error if FrontendURL is empty or is the default localhost value in production
+func ValidateFrontendURL() error {
+	if config.FrontendURL == "" {
+		return errors.New("FRONTEND_URL environment variable is not set")
+	}
 
+	// In production, don't allow the default localhost URL
+	if config.AppEnv == "production" || config.PolarEnvironment == "production" {
+		defaultURL := "http://localhost:3000"
+		if strings.TrimSpace(config.FrontendURL) == defaultURL {
+			return errors.New("FRONTEND_URL must be set to a production URL (cannot use default localhost:3000)")
+		}
+	}
+
+	return nil
+}
